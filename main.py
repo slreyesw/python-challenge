@@ -30,6 +30,7 @@ with open(file) as csvfile:
         len_of_months+=1
         #net total amount of profit/losses
         total+= int(row[1])
+        
     
         #then the average of those changes in net total
         # Track the net change
@@ -60,7 +61,57 @@ print(f'There are {len_of_months} months in this dataset. The net total amount o
 
 #export txt file w results?????
 
-
+print("------------------------------------------------------------------------------------------------")
 
 
 #####PyPoll#####
+
+file=r'C:\Users\slrey\Desktop\Data Camp Challenges\Challenge 3\python-challenge\Starter_Code\Starter_Code\PyPoll\Resources\election_data.csv'
+
+#define variables for code
+total_votes=0
+candidate_list=[ ]
+char_votes=0
+di_votes=0
+ray_votes=0
+per_char=0
+per_ray=0
+per_di=0
+
+with open(file) as csvfile:
+    csvreader=csv.reader(csvfile,delimiter=',')
+    csv_header=next(csvreader)
+
+
+#The total number of votes cast
+    for row in csvreader:
+        total_votes += 1
+    #print(total_votes)
+#A complete list of candidates who received votes
+        candidates= row[2]
+        if candidates not in candidate_list:
+            candidate_list.append(candidates)
+
+#The total number of votes each candidate won
+        if row[2] == "Charles Casper Stockham":
+            char_votes+=1
+        if row[2] == "Diana DeGette":
+            di_votes+=1
+        if row[2] == "Raymon Anthony Doane":
+            ray_votes+=1
+    print("PyPoll Analysis")
+    print(f'Charles had {char_votes} votes, Diana had {di_votes} votes, and Ray had {ray_votes} votes!')
+
+
+#The percentage of votes each candidate won
+    per_char= (char_votes/total_votes)*100
+    per_di=(di_votes/total_votes)*100
+    per_ray=(ray_votes/total_votes)*100
+    print(f'Charles had {per_char}% of vote, Diana had {per_di}% of vote, and Ray had {per_ray}% of vote.')
+
+#The winner of the election based on popular vote
+    print(f'The winner is Diana DeGette based on popular vote!')
+
+#print the analysis to the terminal
+
+#export a text file with the results.
