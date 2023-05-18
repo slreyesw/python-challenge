@@ -4,7 +4,7 @@ import csv
 
 ####pyBank portion####
 
-file=r'C:\Users\slrey\Desktop\Data Camp Challenges\Challenge 3\resources\budget_data.csv'
+file=r'C:\Users\slrey\Desktop\Data Camp Challenges\Challenge 3\python-challenge\resources\budget_data.csv'
 
 net_change_list=[]
 total = 0 
@@ -40,10 +40,13 @@ with open(file) as csvfile:
         #The greatest increase in profits (date and amount) over the entire period
         if float(net_change)> greatest_increase:
             greatest_increase=net_change
+            greatest_month=row[0]
+        
     
         #The greatest decrease in profits (date and amount) over the entire period
         if float(net_change)< greatest_decrease:
             greatest_decrease= net_change
+            worst_month=row[0]
         
 
 
@@ -52,23 +55,12 @@ net_monthly_avg = sum(net_change_list) / len(net_change_list)
 
 #print to terminal
 
-#export txt file w results
+print(f"PyBank Challenge")
+print(f'There are {len_of_months} months in this dataset. The net total amount of profits/losses is ${total}. The average net change is ${net_monthly_avg}. The month that had the great increase was {greatest_month} for ${greatest_increase} and the month that had the worst decrease was {worst_month} for ${greatest_decrease}.')
+
+#export txt file w results?????
 
 
 
 
 #####PyPoll#####
-#The total number of votes cast
-
-#A complete list of candidates who received votes
-
-#The percentage of votes each candidate won
-
-#The total number of votes each candidate won
-
-#The winner of the election based on popular vote
-
-
-
-
-
