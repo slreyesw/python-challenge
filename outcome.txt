@@ -1,0 +1,10 @@
+PyBank Challenge
+There are 86 months in this dataset.
+ The net total amount of profits/losses is $22564198.
+ The average net change is $-8311.11.
+ The month that had the great increase was Aug-16 for $1862002 and the month that had the worst decrease was Feb-14 for $-1825558.
+-----------------------
+PyPoll Analysis
+Charles had 85213 votes, Diana had 272892 votes, and Ray had 11606 votes!
+Charles had 23.05% of vote, Diana had 73.81% of vote, and Ray had 3.14% of vote.
+The winner is Diana DeGette based on popular vote!
