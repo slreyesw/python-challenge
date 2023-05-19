@@ -48,18 +48,24 @@ with open(file) as csvfile:
         if float(net_change)< greatest_decrease:
             greatest_decrease= net_change
             worst_month=row[0]
-        
+
+      
 
 
 # Calculate the Average Net Change
 net_monthly_avg = sum(net_change_list) / len(net_change_list)
 
+#Rounding numbers to 2 decimals
+rounded_net=round(net_monthly_avg, 2)
+rounded_inc=round(greatest_increase,2)
+rounded_dec=round(greatest_decrease, 2)
+
 #print to terminal
 
 print(f"PyBank Challenge")
-print(f'There are {len_of_months} months in this dataset. The net total amount of profits/losses is ${total}. The average net change is ${net_monthly_avg}. The month that had the great increase was {greatest_month} for ${greatest_increase} and the month that had the worst decrease was {worst_month} for ${greatest_decrease}.')
+print(f'There are {len_of_months} months in this dataset. The net total amount of profits/losses is ${total}. The average net change is ${rounded_net}. The month that had the great increase was {greatest_month} for ${rounded_inc} and the month that had the worst decrease was {worst_month} for ${rounded_dec}.')
 
-#export txt file w results?????
+#export txt file
 
 print("------------------------------------------------------------------------------------------------")
 
@@ -86,7 +92,6 @@ with open(file) as csvfile:
 #The total number of votes cast
     for row in csvreader:
         total_votes += 1
-    #print(total_votes)
 #A complete list of candidates who received votes
         candidates= row[2]
         if candidates not in candidate_list:
@@ -105,13 +110,29 @@ with open(file) as csvfile:
 
 #The percentage of votes each candidate won
     per_char= (char_votes/total_votes)*100
+    r_per_char=round(per_char,2)
     per_di=(di_votes/total_votes)*100
+    r_per_di=round(per_di,2)
     per_ray=(ray_votes/total_votes)*100
-    print(f'Charles had {per_char}% of vote, Diana had {per_di}% of vote, and Ray had {per_ray}% of vote.')
+    r_per_ray=round(per_ray,2)
+
+    
+    print(f'Charles had {r_per_char}% of vote, Diana had {r_per_di}% of vote, and Ray had {r_per_ray}% of vote.')
 
 #The winner of the election based on popular vote
     print(f'The winner is Diana DeGette based on popular vote!')
 
 #print the analysis to the terminal
+text_summary=(
+    f'PyBank Challenge\n'
+    f'There are {len_of_months} months in this dataset.\n The net total amount of profits/losses is ${total}.\n The average net change is ${rounded_net}.\n The month that had the great increase was {greatest_month} for ${rounded_inc} and the month that had the worst decrease was {worst_month} for ${rounded_dec}.\n'
+    f'-----------------------\n'
+    f"PyPoll Analysis\n"
+    f'Charles had {char_votes} votes, Diana had {di_votes} votes, and Ray had {ray_votes} votes!\n'
+    f'Charles had {r_per_char}% of vote, Diana had {r_per_di}% of vote, and Ray had {r_per_ray}% of vote.\n'
+    f'The winner is Diana DeGette based on popular vote!')
+
 
 #export a text file with the results.
+with open ("outcome.txt","w") as f:
+    f.write(text_summary)
